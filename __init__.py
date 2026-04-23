@@ -2,7 +2,7 @@ bl_info = {
     "name": "W_Mesh",
     "category": "Object",
     "author": "Vit Prochazka, MrDixioner",
-    "version": (1, 5),
+    "version": (1, 5, 1),
     "blender": (4, 0, 0),
     "description": "Modify primitives after creation.",
 }
@@ -22,6 +22,7 @@ from .W_Box import reg_wBox, unreg_wBox, update_WBox, draw_WBox_panel
 from .W_Capsule import reg_wCapsule, unreg_wCapsule, update_WCapsule, draw_WCapsule_panel
 from .W_Cone import reg_wCone, unreg_wCone, update_WCone, draw_WCone_panel
 from .W_Plane import reg_wPlane, unreg_wPlane, update_wPlane, draw_wPlane_panel
+from .W_Pyramid import reg_wPyramid, unreg_wPyramid, update_WPyramid, draw_WPyramid_panel
 from .W_Ring import reg_wRing, unreg_wRing, update_WRing, draw_WRing_panel
 from .W_Screw import reg_wScrew, unreg_wScrew, update_WScrew, draw_WScrew_panel
 from .W_Sphere import reg_wSphere, unreg_wSphere, update_WSphere, draw_WSphere_panel
@@ -36,10 +37,11 @@ def WUpdate(self, context):
     edges = []
     faces = []
 
-    if self.wType == "WPLANE" : verts, edges, faces = update_wPlane(self)
     if self.wType == "WBOX" : verts, edges, faces = update_WBox(self)
     if self.wType == "WCAPSULE" : verts, edges, faces = update_WCapsule(self)
     if self.wType == "WCONE" : verts, edges, faces = update_WCone(self)
+    if self.wType == "WPLANE" : verts, edges, faces = update_wPlane(self)
+    if self.wType == "WPYRAMID" : verts, edges, faces = update_WPyramid(self)
     if self.wType == "WRING" : verts, edges, faces = update_WRing(self)
     if self.wType == "WSCREW" : verts, edges, faces = update_WScrew(self)
     if self.wType == "WSPHERE" : verts, edges, faces = update_WSphere(self)
@@ -61,15 +63,16 @@ class wData(bpy.types.PropertyGroup):
 
     WTypes = [
         ('NONE', "None", ""),
-        ('WPLANE', "wPlane", ""),
         ('WBOX', "wBox", ""),
-        ('WSCREW', "wScrew", ""),
-        ('WRING', "wRing", ""),
-        ('WTUBE', "wTube", ""),
-        ('WSPHERE', "wSphere", ""),
-        ("WCONE", "wCone", ""),
         ("WCAPSULE", "wCapsule", ""),
-        ("WTORUS", "wTorus", "")
+        ("WCONE", "wCone", ""),
+        ('WPLANE', "wPlane", ""),
+        ('WPYRAMID', "wPyramid", ""),
+        ('WSCREW', "wScrew", ""),
+        ('WSPHERE', "wSphere", ""),
+        ('WRING', "wRing", ""),
+        ("WTORUS", "wTorus", ""),
+        ('WTUBE', "wTube", "")
     ]
 
     SBases = [
@@ -244,6 +247,7 @@ class WAddMenu(bpy.types.Menu):
         lay_out.operator(operator="mesh.make_wcapsule", icon='MESH_CAPSULE')
         lay_out.operator(operator="mesh.make_wcone", icon='MESH_CONE')
         lay_out.operator(operator="mesh.make_wplane", icon='MESH_PLANE')
+        lay_out.operator(operator="mesh.make_wpyramid", icon='OUTLINER_DATA_MESH')
         lay_out.operator(operator="mesh.make_wring", icon='MESH_CIRCLE')
         lay_out.operator(operator="mesh.make_wscrew", icon='MOD_SCREW')
         lay_out.operator(operator="mesh.make_wsphere", icon='MESH_UVSPHERE')
@@ -289,6 +293,7 @@ class WEditPanel(bpy.types.Panel):
             if WType == 'WCAPSULE': draw_WCapsule_panel(self, context)
             if WType == 'WCONE': draw_WCone_panel(self, context)
             if WType == 'WPLANE': draw_wPlane_panel(self, context)
+            if WType == 'WPYRAMID': draw_WPyramid_panel(self, context)
             if WType == 'WRING': draw_WRing_panel(self, context)
             if WType == 'WSCREW': draw_WScrew_panel(self, context)
             if WType == 'WSPHERE': draw_WSphere_panel(self, context)
@@ -306,6 +311,7 @@ def register():
     reg_wBox()
     reg_wCapsule()
     reg_wCone()
+    reg_wPyramid()
     reg_wPlane()
     reg_wRing()
     reg_wScrew()
@@ -328,6 +334,7 @@ def unregister():
     unreg_wCapsule()
     unreg_wCone()
     unreg_wPlane()
+    unreg_wPyramid()
     unreg_wRing()
     unreg_wScrew()
     unreg_wSphere()
