@@ -18,6 +18,8 @@
 1. In Object Mode, press `Shift + A`.
 2. Navigate to the **wPrimitives** menu and select a primitive.
 3. Adjust parameters in the **Object Properties** panel.
+<img width="946" height="546" alt="image" src="https://github.com/user-attachments/assets/0eceed6c-fd99-4e94-ad11-b3c0af91cf09" />
+
 
 > [!TIP]
 > **About the "Coef" parameter:** It scales the object slightly so that after a *Subdivision Surface* modifier is applied, the object returns to its exact intended size. 
@@ -46,6 +48,8 @@
 1. В объектном режиме нажмите `Shift + A`.
 2. Выберите нужный объект в меню **wPrimitives**.
 3. Все настройки примитива находятся в панели **Object (Свойства объекта)**.
+<img width="946" height="546" alt="image" src="https://github.com/user-attachments/assets/0eceed6c-fd99-4e94-ad11-b3c0af91cf09" />
+
 
 > [!TIP]
 > **Параметр Coef:** Предназначен для компенсации усадки при сглаживании. При активации объект немного увеличится, а после применения *Subdivision Surface* примет точный размер. Работает при четном количестве сегментов от 6 до 52.
