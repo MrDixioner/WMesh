@@ -196,7 +196,7 @@ class Make_WCapsule(bpy.types.Operator):
     centered: BoolProperty(
         name = "Centered",
         description = "Set origin of the cone",
-        default = False
+        default = True
     )
 
     coefficient: BoolProperty(

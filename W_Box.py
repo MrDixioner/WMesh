@@ -240,9 +240,7 @@ def draw_WBox_panel(self, context):
     col.prop(WData, "seg_3", text="Z")
 
     lay_out.prop(WData, "cent", text="Centered")
-    #lay_out.prop(WData, "anim", text="Animated")
-
-
+    
 # register
 def reg_wBox():
     bpy.utils.register_class(Make_WBox)
