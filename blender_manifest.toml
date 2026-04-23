@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "w_mesh_primitives"
+version = "1.5.0"
+name = "W_Mesh"
+tagline = "Modify primitives after creation with subdivision compensation."
+maintainer = "Vit Prochazka, MrDixioner"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+tags = ["Object", "Mesh"]
