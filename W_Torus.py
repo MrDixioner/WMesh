@@ -219,10 +219,17 @@ class Make_WTorus(bpy.types.Operator):
 # create UI panel
 def draw_WTorus_panel(self, context):
     lay_out = self.layout
+
+    from . import w_icons
+
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    lay_out.label(text="Type: wTorus", icon='MESH_TORUS')
+    if w_icons and "W_Torus_64" in w_icons:
+        icon_id = w_icons["W_Torus_64"].icon_id
+        lay_out.label(text="Type: wTorus", icon_value=icon_id)
+    else:
+        lay_out.label(text="Type: wTorus", icon='MESH_TORUS')
 
     col = lay_out.column(align=True)
     if not WData.use_bounds:

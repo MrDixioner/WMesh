@@ -217,10 +217,17 @@ class Make_WBox(bpy.types.Operator):
 # create UI panel
 def draw_WBox_panel(self, context):
     lay_out = self.layout
+
+    from . import w_icons
+
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    lay_out.label(text="Type: wBox", icon='MESH_CUBE')
+    if w_icons and "W_Box_64" in w_icons:
+        icon_id = w_icons["W_Box_64"].icon_id
+        lay_out.label(text="Type: wBox", icon_value=icon_id)
+    else:
+        lay_out.label(text="Type: wBox", icon='MESH_CUBE')
 
     col = lay_out.column(align=True)
     col.prop(WData, "siz_x", text="Size X")

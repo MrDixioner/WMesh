@@ -98,10 +98,17 @@ class Make_WPyramid(bpy.types.Operator):
 
 def draw_WPyramid_panel(self, context):
     lay_out = self.layout
+
+    from . import w_icons
+
     lay_out.use_property_split = True
     wD = context.object.data.wData
     
-    lay_out.label(text="Type: wPyramid", icon='OUTLINER_DATA_MESH')
+    if w_icons and "W_Pyramid_64" in w_icons:
+        icon_id = w_icons["W_Pyramid_64"].icon_id
+        lay_out.label(text="Type: wPyramid", icon_value=icon_id)
+    else:
+        lay_out.label(text="Type: wPyramid", icon='OUTLINER_DATA_MESH')
     
     col = lay_out.column(align=True)
     col.prop(wD, "siz_y", text="Diameter")

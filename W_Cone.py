@@ -241,10 +241,18 @@ class Make_WCone(bpy.types.Operator):
 # create UI panel
 def draw_WCone_panel(self, context):
     lay_out = self.layout
+
+    from . import w_icons
+
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    lay_out.label(text="Type: wCone", icon='MESH_CONE')
+    if w_icons and "W_Cone_64" in w_icons:
+        icon_id = w_icons["W_Cone_64"].icon_id
+        lay_out.label(text="Type: wCone", icon_value=icon_id)
+    else:
+        lay_out.label(text="Type: wCone", icon='MESH_CONE')
+
 
     col = lay_out.column(align=True)
     col.prop(WData, "dia_2", text="Diameter Top")

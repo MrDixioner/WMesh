@@ -7,7 +7,10 @@ bl_info = {
     "description": "Modify primitives after creation.",
 }
 
+import os
 import bpy
+import bpy.utils.previews
+w_icons = None
 import bmesh
 from bpy.props import (
     EnumProperty,
@@ -243,16 +246,19 @@ class WAddMenu(bpy.types.Menu):
 
     def draw(self, context):
         lay_out = self.layout
-        lay_out.operator(operator="mesh.make_wbox", icon='MESH_CUBE')
-        lay_out.operator(operator="mesh.make_wcapsule", icon='MESH_CAPSULE')
-        lay_out.operator(operator="mesh.make_wcone", icon='MESH_CONE')
-        lay_out.operator(operator="mesh.make_wplane", icon='MESH_PLANE')
-        lay_out.operator(operator="mesh.make_wpyramid", icon='OUTLINER_DATA_MESH')
-        lay_out.operator(operator="mesh.make_wring", icon='MESH_CIRCLE')
-        lay_out.operator(operator="mesh.make_wscrew", icon='MOD_SCREW')
-        lay_out.operator(operator="mesh.make_wsphere", icon='MESH_UVSPHERE')
-        lay_out.operator(operator="mesh.make_wtorus", icon='MESH_TORUS')
-        lay_out.operator(operator="mesh.make_wtube", icon='MESH_CYLINDER')
+        # Получаем доступ к коллекции иконок
+        pcoll = w_icons
+
+        lay_out.operator(operator="mesh.make_wbox", icon_value=pcoll["W_Box_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wcapsule", icon_value=pcoll["W_Capsule_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wcone", icon_value=pcoll["W_Cone_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wplane", icon_value=pcoll["W_Plane_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wpyramid", icon_value=pcoll["W_Pyramid_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wring", icon_value=pcoll["W_Ring_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wscrew", icon_value=pcoll["W_Screw_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wsphere", icon_value=pcoll["W_Sphere_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wtorus", icon_value=pcoll["W_Torus_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wtube", icon_value=pcoll["W_Tube_64"].icon_id)
 
 
 def draw_addMenu(self, context):
@@ -304,7 +310,24 @@ class WEditPanel(bpy.types.Panel):
             lay_out.operator(operator="mesh.convert_w_mesh")
             lay_out.separator()
 
+def load_w_icons():
+    global w_icons
+    w_icons = bpy.utils.previews.new()
+    icons_dir = os.path.join(os.path.dirname(__file__), "icons")
+    
+    # Загружаем файлы. Имена ключей будут соответствовать именам файлов
+    # Например, к W_Box_64.png обратимся как w_icons["W_Box_64"]
+    for entry in os.scandir(icons_dir):
+        if entry.name.endswith(".png"):
+            name = os.path.splitext(entry.name)[0]
+            w_icons.load(name, entry.path, 'IMAGE')
+
+def unload_w_icons():
+    global w_icons
+    bpy.utils.previews.remove(w_icons)
+
 def register():
+    load_w_icons()  # Загружаем иконки при включении аддона
     bpy.utils.register_class(wData)
     bpy.types.Mesh.wData = PointerProperty(type=wData)
 
@@ -327,6 +350,7 @@ def register():
     print("Registered W_Mesh")
 
 def unregister():
+    unload_w_icons() # Очищаем память при выключении
     del bpy.types.Mesh.wData
     del bpy.types.Scene.refreshWMesh
 

@@ -228,10 +228,17 @@ class Make_WRing(bpy.types.Operator):
 # create UI panel
 def draw_WRing_panel(self, context):
     lay_out = self.layout
+
+    from . import w_icons
+
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    lay_out.label(text="Type: wRing", icon='MESH_CIRCLE')
+    if w_icons and "W_Ring_64" in w_icons:
+        icon_id = w_icons["W_Ring_64"].icon_id
+        lay_out.label(text="Type: wRing", icon_value=icon_id)
+    else:
+        lay_out.label(text="Type: wRing", icon='MESH_CIRCLE')
 
     col = lay_out.column(align=True)
     col.prop(WData, "dia_1", text="Diameter Main")
