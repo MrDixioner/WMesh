@@ -4,7 +4,7 @@
 
 ## 🇺🇸 English
 
-**WMesh** is a Blender add-on for creating parametric primitives, inspired by the workflow in Cinema 4D. This is an updated version of the **W_Mesh_28x** add-on, fully compatible with **Blender 4.0 up to 5.1**.
+**WMesh** is a Blender add-on for creating parametric primitives, inspired by the workflow in Cinema 4D. This is an updated version of the **W_Mesh_28x** add-on (https://github.com/WiresoulStudio/W_Mesh_28x), fully compatible with **Blender 4.0 up to 5.1**.
 
 ### ✨ Features
 * **Parametric Primitives:** Create Cube, Capsule, Cone, Plane, Disc, Screw, Sphere, Torus, and Cylinder (Pipe).
@@ -34,7 +34,7 @@
 
 ## 🇷🇺 Русский
 
-**WMesh** — плагин для Blender для создания параметрических примитивов аналогично тому, как это реализовано в Cinema 4D. Это обновленная версия плагина **W_Mesh_28x**, работающая в новых версиях **Blender от 4.0 до 5.1 включительно**.
+**WMesh** — плагин для Blender для создания параметрических примитивов аналогично тому, как это реализовано в Cinema 4D. Это обновленная версия плагина **W_Mesh_28x** (https://github.com/WiresoulStudio/W_Mesh_28x), работающая в новых версиях **Blender от 4.0 до 5.1 включительно**.
 
 ### ✨ Возможности
 * **Набор примитивов:** Куб, Капсула, Конус, Плоскость, Диск, Резьба, Сфера, Тор и Цилиндр (труба).
