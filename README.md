@@ -6,11 +6,10 @@
 
 **WMesh** is a Blender add-on for creating parametric primitives, inspired by the workflow in Cinema 4D. This is an updated version of the **W_Mesh_28x** add-on (https://github.com/WiresoulStudio/W_Mesh_28x), fully compatible with **Blender 4.0 up to 5.1**.
 
-<img width="787" height="485" alt="image" src="https://github.com/user-attachments/assets/ee251f6d-29d9-44c9-a7fb-aa0316d7ab8e" />
-
+<img width="890" height="659" alt="image" src="https://github.com/user-attachments/assets/ed317c5b-ea89-4401-bb96-962fd7985b5c" />
 
 ### ✨ Features
-* **Parametric Primitives:** Create Cube, Capsule, Cone, Plane, Disc, Screw, Sphere, Torus, and Cylinder (Pipe).
+* **Parametric Primitives:** Create Cube, Capsule, Cone, Plane, Disc, Screw, Pyramid, Spiral, Sphere, Torus, and Cylinder (Pipe).
 * **Section Support:** Create partial sections for Cylinder and Torus instead of full circles.
 * **Full Control:** Adjust segments across all planes for every primitive.
 * **[NEW] Shrinkage Compensation (Coef):** Available for rounded primitives (except Sphere/Screw). It compensates for size loss after applying the *Subdivision Surface* modifier for high-precision modeling.
@@ -22,7 +21,6 @@
 2. Navigate to the **wPrimitives** menu and select a primitive.
 3. Adjust parameters in the **Object Properties** panel.
 <img width="946" height="546" alt="image" src="https://github.com/user-attachments/assets/0eceed6c-fd99-4e94-ad11-b3c0af91cf09" />
-
 
 > [!TIP]
 > **About the "Coef" parameter:** It scales the object slightly so that after a *Subdivision Surface* modifier is applied, the object returns to its exact intended size. 
@@ -39,10 +37,10 @@
 
 **WMesh** — плагин для Blender для создания параметрических примитивов аналогично тому, как это реализовано в Cinema 4D. Это обновленная версия плагина **W_Mesh_28x** (https://github.com/WiresoulStudio/W_Mesh_28x), работающая в новых версиях **Blender от 4.0 до 5.1 включительно**.
 
-<img width="787" height="485" alt="image" src="https://github.com/user-attachments/assets/ee251f6d-29d9-44c9-a7fb-aa0316d7ab8e" />
+<img width="890" height="659" alt="image" src="https://github.com/user-attachments/assets/ed317c5b-ea89-4401-bb96-962fd7985b5c" />
 
 ### ✨ Возможности
-* **Набор примитивов:** Куб, Капсула, Конус, Плоскость, Диск, Резьба, Сфера, Тор и Цилиндр (труба).
+* **Набор примитивов:** Куб, Капсула, Конус, Плоскость, Диск, Резьба, Пирамида, Спираль, Сфера, Тор и Цилиндр (труба).
 * **Работа с секциями:** Для Цилиндра или Тора можно создавать не только полные окружности, но и отдельные секции.
 * **Детализация:** Гибкая настройка сегментов по всем плоскостям объектов.
 * **[НОВОЕ] Коэффициент усадки (Coef):** Для всех округлых объектов (кроме Сферы/Резьбы). Позволяет сохранять точные размеры объекта после применения модификатора *Subdivision Surface*.
@@ -54,7 +52,6 @@
 2. Выберите нужный объект в меню **wPrimitives**.
 3. Все настройки примитива находятся в панели **Object (Свойства объекта)**.
 <img width="946" height="546" alt="image" src="https://github.com/user-attachments/assets/0eceed6c-fd99-4e94-ad11-b3c0af91cf09" />
-
 
 > [!TIP]
 > **Параметр Coef:** Предназначен для компенсации усадки при сглаживании. При активации объект немного увеличится, а после применения *Subdivision Surface* примет точный размер. Работает при четном количестве сегментов от 6 до 52.
