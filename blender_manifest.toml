@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "w_mesh_primitives"
-version = "1.5.1"
+version = "1.7.0"
 name = "W_Mesh"
 tagline = "Modify primitives after creation with subdivision compensation."
 maintainer = "Vit Prochazka, MrDixioner"
