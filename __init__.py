@@ -2,7 +2,7 @@ bl_info = {
     "name": "W_Mesh",
     "category": "Object",
     "author": "Vit Prochazka, MrDixioner",
-    "version": (1, 5, 1),
+    "version": (1, 7, 0),
     "blender": (4, 0, 0),
     "description": "Modify primitives after creation.",
 }
@@ -29,6 +29,7 @@ from .W_Pyramid import reg_wPyramid, unreg_wPyramid, update_WPyramid, draw_WPyra
 from .W_Ring import reg_wRing, unreg_wRing, update_WRing, draw_WRing_panel
 from .W_Screw import reg_wScrew, unreg_wScrew, update_WScrew, draw_WScrew_panel
 from .W_Sphere import reg_wSphere, unreg_wSphere, update_WSphere, draw_WSphere_panel
+from .W_Spiral import reg_wSpiral, unreg_wSpiral, update_WSpiral, draw_WSpiral_panel
 from .W_Torus import reg_wTorus, unreg_wTorus, update_WTorus, draw_WTorus_panel
 from .W_Tube import reg_wTube, unreg_wTube, update_WTube, draw_WTube_panel
 
@@ -48,6 +49,7 @@ def WUpdate(self, context):
     if self.wType == "WRING" : verts, edges, faces = update_WRing(self)
     if self.wType == "WSCREW" : verts, edges, faces = update_WScrew(self)
     if self.wType == "WSPHERE" : verts, edges, faces = update_WSphere(self)
+    if self.wType == "WSPIRAL" : verts, edges, faces = update_WSpiral(self)
     if self.wType == "WTORUS" : verts, edges, faces = update_WTorus(self)
     if self.wType == "WTUBE" : verts, edges, faces = update_WTube(self)
     
@@ -73,6 +75,7 @@ class wData(bpy.types.PropertyGroup):
         ('WPYRAMID', "wPyramid", ""),
         ('WSCREW', "wScrew", ""),
         ('WSPHERE', "wSphere", ""),
+        ("WSPIRAL", "wSpiral", ""),
         ('WRING', "wRing", ""),
         ("WTORUS", "wTorus", ""),
         ('WTUBE', "wTube", "")
@@ -240,6 +243,28 @@ class wData(bpy.types.PropertyGroup):
         update=WUpdate
     )
 
+    turns: FloatProperty(
+        name="Turns",
+        description="Number of helical turns",
+        default=3.0,
+        min=0.1,
+        soft_min=0.1,
+        step=10,
+        update=WUpdate
+    )
+
+    dia_sec: FloatProperty(
+        name="Section Diameter",
+        description="Diameter of the profile circle",
+        default=0.1,
+        min=0.001,
+        soft_min=0.001,
+        step=1,
+        unit='LENGTH',
+        update=WUpdate
+    )
+
+
 class WAddMenu(bpy.types.Menu):
     bl_label = "wPrimitives"
     bl_idname = "OBJECT_MT_W_Primitives_menu"
@@ -257,6 +282,7 @@ class WAddMenu(bpy.types.Menu):
         lay_out.operator(operator="mesh.make_wring", icon_value=pcoll["W_Ring_64"].icon_id)
         lay_out.operator(operator="mesh.make_wscrew", icon_value=pcoll["W_Screw_64"].icon_id)
         lay_out.operator(operator="mesh.make_wsphere", icon_value=pcoll["W_Sphere_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wspiral", icon_value=pcoll["W_Spiral_64"].icon_id)
         lay_out.operator(operator="mesh.make_wtorus", icon_value=pcoll["W_Torus_64"].icon_id)
         lay_out.operator(operator="mesh.make_wtube", icon_value=pcoll["W_Tube_64"].icon_id)
 
@@ -303,6 +329,7 @@ class WEditPanel(bpy.types.Panel):
             if WType == 'WRING': draw_WRing_panel(self, context)
             if WType == 'WSCREW': draw_WScrew_panel(self, context)
             if WType == 'WSPHERE': draw_WSphere_panel(self, context)
+            if WType == 'WSPIRAL': draw_WSpiral_panel(self, context)
             if WType == 'WTORUS': draw_WTorus_panel(self, context)
             if WType == 'WTUBE': draw_WTube_panel(self, context)
 
@@ -339,6 +366,7 @@ def register():
     reg_wRing()
     reg_wScrew()
     reg_wSphere()
+    reg_wSpiral()
     reg_wTorus()
     reg_wTube()
 
@@ -362,6 +390,7 @@ def unregister():
     unreg_wRing()
     unreg_wScrew()
     unreg_wSphere()
+    unreg_wSpiral()
     unreg_wTorus()
     unreg_wTube()
 
