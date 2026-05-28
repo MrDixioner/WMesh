@@ -18,7 +18,7 @@ from .genFunctions import (
 )
 
 # generate geometry
-def geoGen_WSpiral(
+def geoGen_WSpring(
     dia_bottom,
     dia_top,
     dia_section,
@@ -119,8 +119,8 @@ def geoGen_WSpiral(
 
     return verts, edges, faces
 
-def update_WSpiral(wData):
-    return geoGen_WSpiral(
+def update_WSpring(wData):
+    return geoGen_WSpring(
         dia_bottom=wData.dia_1,
         dia_top=wData.dia_2,
         dia_section=wData.dia_sec,
@@ -133,10 +133,10 @@ def update_WSpiral(wData):
     )
 
 # Operator to create object
-class Make_WSpiral(bpy.types.Operator):
-    """Create primitive wSpiral"""
-    bl_idname = "mesh.make_wspiral"
-    bl_label = "wSpiral"
+class Make_WSpring(bpy.types.Operator):
+    """Create primitive wSpring"""
+    bl_idname = "mesh.make_wspring"
+    bl_label = "wSpring"
     bl_options = {'UNDO', 'REGISTER'}
 
     dia_1: FloatProperty(name="Bottom Diameter", default=1.0, min=0.0, unit="LENGTH")
@@ -150,7 +150,7 @@ class Make_WSpiral(bpy.types.Operator):
     coefficient: BoolProperty(name="Coef", default=False)
 
     def execute(self, context):
-        mesh = bpy.data.meshes.new("wSpiral")
+        mesh = bpy.data.meshes.new("wSpring")
 
         wD = mesh.wData
         wD.dia_1 = self.dia_1
@@ -162,25 +162,25 @@ class Make_WSpiral(bpy.types.Operator):
         wD.seg_2 = self.seg_2
         wD.cent = self.centered
         wD.coeff = self.coefficient
-        wD.wType = 'WSPIRAL'
+        wD.wType = 'WSPRING'
 
-        mesh.from_pydata(*update_WSpiral(wD))
+        mesh.from_pydata(*update_WSpring(wD))
         mesh.update()
         
         object_utils.object_data_add(context, mesh, operator=None)
         return {'FINISHED'}
 
 # UI panel draw function
-def draw_WSpiral_panel(self, context):
+def draw_WSpring_panel(self, context):
     lay_out = self.layout
     from . import w_icons
 
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "WSpiral" in w_icons:
-        icon_id = w_icons["WSpiral"].icon_id
-        lay_out.label(text="Type: wSpiral", icon_value=icon_id)
+    if w_icons and "WSpring" in w_icons:
+        icon_id = w_icons["WSpring"].icon_id
+        lay_out.label(text="Type: wSpring", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wScrew", icon='MOD_SCREW')
 
@@ -200,8 +200,8 @@ def draw_WSpiral_panel(self, context):
     lay_out.prop(WData, "cent", text="Centered")
     lay_out.prop(WData, "coeff", text="Coef")
 
-def reg_wSpiral():
-    bpy.utils.register_class(Make_WSpiral)
+def reg_wSpring():
+    bpy.utils.register_class(Make_WSpring)
 
-def unreg_wSpiral():
-    bpy.utils.unregister_class(Make_WSpiral)
+def unreg_wSpring():
+    bpy.utils.unregister_class(Make_WSpring)

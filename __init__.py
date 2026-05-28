@@ -29,7 +29,7 @@ from .WPyramid import reg_wPyramid, unreg_wPyramid, update_WPyramid, draw_WPyram
 from .WRing import reg_wRing, unreg_wRing, update_WRing, draw_WRing_panel
 from .WScrew import reg_wScrew, unreg_wScrew, update_WScrew, draw_WScrew_panel
 from .WSphere import reg_wSphere, unreg_wSphere, update_WSphere, draw_WSphere_panel
-from .WSpiral import reg_wSpiral, unreg_wSpiral, update_WSpiral, draw_WSpiral_panel
+from .WSpring import reg_wSpring, unreg_wSpring, update_WSpring, draw_WSpring_panel
 from .WTorus import reg_wTorus, unreg_wTorus, update_WTorus, draw_WTorus_panel
 from .WTube import reg_wTube, unreg_wTube, update_WTube, draw_WTube_panel
 
@@ -49,7 +49,7 @@ def WUpdate(self, context):
     if self.wType == "WRING" : verts, edges, faces = update_WRing(self)
     if self.wType == "WSCREW" : verts, edges, faces = update_WScrew(self)
     if self.wType == "WSPHERE" : verts, edges, faces = update_WSphere(self)
-    if self.wType == "WSPIRAL" : verts, edges, faces = update_WSpiral(self)
+    if self.wType == "WSPRING" : verts, edges, faces = update_WSpring(self)
     if self.wType == "WTORUS" : verts, edges, faces = update_WTorus(self)
     if self.wType == "WTUBE" : verts, edges, faces = update_WTube(self)
     
@@ -75,7 +75,7 @@ class wData(bpy.types.PropertyGroup):
         ('WPYRAMID', "wPyramid", ""),
         ('WSCREW', "wScrew", ""),
         ('WSPHERE', "wSphere", ""),
-        ("WSPIRAL", "wSpiral", ""),
+        ("WSPRING", "wSpring", ""),
         ('WRING', "wRing", ""),
         ("WTORUS", "wTorus", ""),
         ('WTUBE', "wTube", "")
@@ -282,7 +282,7 @@ class WAddMenu(bpy.types.Menu):
         lay_out.operator(operator="mesh.make_wring", icon_value=pcoll["WRing"].icon_id)
         lay_out.operator(operator="mesh.make_wscrew", icon_value=pcoll["WScrew"].icon_id)
         lay_out.operator(operator="mesh.make_wsphere", icon_value=pcoll["WSphere"].icon_id)
-        lay_out.operator(operator="mesh.make_wspiral", icon_value=pcoll["WSpiral"].icon_id)
+        lay_out.operator(operator="mesh.make_wspring", icon_value=pcoll["WSpring"].icon_id)
         lay_out.operator(operator="mesh.make_wtorus", icon_value=pcoll["WTorus"].icon_id)
         lay_out.operator(operator="mesh.make_wtube", icon_value=pcoll["WTube"].icon_id)
 
@@ -329,7 +329,7 @@ class WEditPanel(bpy.types.Panel):
             if WType == 'WRING': draw_WRing_panel(self, context)
             if WType == 'WSCREW': draw_WScrew_panel(self, context)
             if WType == 'WSPHERE': draw_WSphere_panel(self, context)
-            if WType == 'WSPIRAL': draw_WSpiral_panel(self, context)
+            if WType == 'WSPRING': draw_WSpring_panel(self, context)
             if WType == 'WTORUS': draw_WTorus_panel(self, context)
             if WType == 'WTUBE': draw_WTube_panel(self, context)
 
@@ -366,7 +366,7 @@ def register():
     reg_wRing()
     reg_wScrew()
     reg_wSphere()
-    reg_wSpiral()
+    reg_wSpring()
     reg_wTorus()
     reg_wTube()
 
@@ -388,7 +388,7 @@ def unregister():
     unreg_wRing()
     unreg_wScrew()
     unreg_wSphere()
-    unreg_wSpiral()
+    unreg_wSpring()
     unreg_wTorus()
     unreg_wTube()
 
