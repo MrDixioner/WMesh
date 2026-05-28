@@ -208,7 +208,7 @@ def update_WScrew (wData):
         diameter_2 = wData.dia_2
     )
 
-# add object W_Plane
+# add object WPlane
 class Make_WScrew(bpy.types.Operator):
     """Create primitive wScrew"""
     bl_idname = "mesh.make_wscrew"
@@ -291,8 +291,8 @@ def draw_WScrew_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Screw_64" in w_icons:
-        icon_id = w_icons["W_Screw_64"].icon_id
+    if w_icons and "WScrew" in w_icons:
+        icon_id = w_icons["WScrew"].icon_id
         lay_out.label(text="Type: wScrew", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wScrew", icon='MOD_SCREW')

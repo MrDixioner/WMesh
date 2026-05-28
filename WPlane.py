@@ -55,7 +55,7 @@ def update_wPlane (wData):
         centered=wData.cent
     )
 
-# add object W_Plane
+# add object WPlane
 class Make_WPlane(bpy.types.Operator):
     """Create primitive wPlane"""
     bl_idname = "mesh.make_wplane"
@@ -134,8 +134,8 @@ def draw_wPlane_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Plane_64" in w_icons:
-        icon_id = w_icons["W_Plane_64"].icon_id
+    if w_icons and "WPlane" in w_icons:
+        icon_id = w_icons["WPlane"].icon_id
         lay_out.label(text="Type: wPlane", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wPlane", icon='MESH_PLANE')

@@ -104,8 +104,8 @@ def draw_WPyramid_panel(self, context):
     lay_out.use_property_split = True
     wD = context.object.data.wData
     
-    if w_icons and "W_Pyramid_64" in w_icons:
-        icon_id = w_icons["W_Pyramid_64"].icon_id
+    if w_icons and "WPyramid" in w_icons:
+        icon_id = w_icons["WPyramid"].icon_id
         lay_out.label(text="Type: wPyramid", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wPyramid", icon='OUTLINER_DATA_MESH')

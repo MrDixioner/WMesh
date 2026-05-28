@@ -257,7 +257,7 @@ def update_WTube (wData):
         coefficient = wData.coeff
     )
 
-# add object W_Tube
+# add object WTube
 class Make_WTube(bpy.types.Operator):
     """Create primitive wTube"""
     bl_idname = "mesh.make_wtube"
@@ -398,8 +398,8 @@ def draw_WTube_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Tube_64" in w_icons:
-        icon_id = w_icons["W_Tube_64"].icon_id
+    if w_icons and "WTube" in w_icons:
+        icon_id = w_icons["WTube"].icon_id
         lay_out.label(text="Type: wTube", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wTube", icon='MESH_CYLINDER')

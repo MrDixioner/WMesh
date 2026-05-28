@@ -136,7 +136,7 @@ def update_WCapsule (wData):
         coefficient = wData.coeff
     )
 
-# add object W_Capsule
+# add object WCapsule
 class Make_WCapsule(bpy.types.Operator):
     """Create primitive wCapsule"""
     bl_idname = "mesh.make_wcapsule"
@@ -239,8 +239,8 @@ def draw_WCapsule_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Capsule_64" in w_icons:
-        icon_id = w_icons["W_Capsule_64"].icon_id
+    if w_icons and "WCapsule" in w_icons:
+        icon_id = w_icons["WCapsule"].icon_id
         lay_out.label(text="Type: wCapsule", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wCapsule", icon='MESH_CAPSULE')

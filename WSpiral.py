@@ -178,8 +178,8 @@ def draw_WSpiral_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Spiral_64" in w_icons:
-        icon_id = w_icons["W_Spiral_64"].icon_id
+    if w_icons and "WSpiral" in w_icons:
+        icon_id = w_icons["WSpiral"].icon_id
         lay_out.label(text="Type: wSpiral", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wScrew", icon='MOD_SCREW')

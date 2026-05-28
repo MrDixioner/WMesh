@@ -18,7 +18,7 @@ from .genFunctions import (
     bridgeLoops,
     coef
 )
-from .W_Bases import baseHedron
+from .WBases import baseHedron
 
 def primitive_UVSphere(
                 diameter = 1.0,
@@ -130,7 +130,7 @@ def update_WSphere (wData):
             tris = wData.inn
         )    
 
-# add object W_Plane
+# add object WPlane
 class Make_WSphere(bpy.types.Operator):
     """Create primitive wSphere"""
     bl_idname = "mesh.make_wsphere"
@@ -234,8 +234,8 @@ def draw_WSphere_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Sphere_64" in w_icons:
-        icon_id = w_icons["W_Sphere_64"].icon_id
+    if w_icons and "WSphere" in w_icons:
+        icon_id = w_icons["WSphere"].icon_id
         lay_out.label(text="Type: wSphere", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wSphere", icon='MESH_UVSPHERE')

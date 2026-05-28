@@ -1,8 +1,8 @@
 bl_info = {
-    "name": "W_Mesh",
+    "name": "WMesh",
     "category": "Object",
     "author": "Vit Prochazka, MrDixioner",
-    "version": (1, 7, 0),
+    "version": (1, 7, 1),
     "blender": (4, 0, 0),
     "description": "Modify primitives after creation.",
 }
@@ -21,17 +21,17 @@ from bpy.props import (
 )
 from math import pi
 
-from .W_Box import reg_wBox, unreg_wBox, update_WBox, draw_WBox_panel
-from .W_Capsule import reg_wCapsule, unreg_wCapsule, update_WCapsule, draw_WCapsule_panel
-from .W_Cone import reg_wCone, unreg_wCone, update_WCone, draw_WCone_panel
-from .W_Plane import reg_wPlane, unreg_wPlane, update_wPlane, draw_wPlane_panel
-from .W_Pyramid import reg_wPyramid, unreg_wPyramid, update_WPyramid, draw_WPyramid_panel
-from .W_Ring import reg_wRing, unreg_wRing, update_WRing, draw_WRing_panel
-from .W_Screw import reg_wScrew, unreg_wScrew, update_WScrew, draw_WScrew_panel
-from .W_Sphere import reg_wSphere, unreg_wSphere, update_WSphere, draw_WSphere_panel
-from .W_Spiral import reg_wSpiral, unreg_wSpiral, update_WSpiral, draw_WSpiral_panel
-from .W_Torus import reg_wTorus, unreg_wTorus, update_WTorus, draw_WTorus_panel
-from .W_Tube import reg_wTube, unreg_wTube, update_WTube, draw_WTube_panel
+from .WBox import reg_wBox, unreg_wBox, update_WBox, draw_WBox_panel
+from .WCapsule import reg_wCapsule, unreg_wCapsule, update_WCapsule, draw_WCapsule_panel
+from .WCone import reg_wCone, unreg_wCone, update_WCone, draw_WCone_panel
+from .WPlane import reg_wPlane, unreg_wPlane, update_wPlane, draw_wPlane_panel
+from .WPyramid import reg_wPyramid, unreg_wPyramid, update_WPyramid, draw_WPyramid_panel
+from .WRing import reg_wRing, unreg_wRing, update_WRing, draw_WRing_panel
+from .WScrew import reg_wScrew, unreg_wScrew, update_WScrew, draw_WScrew_panel
+from .WSphere import reg_wSphere, unreg_wSphere, update_WSphere, draw_WSphere_panel
+from .WSpiral import reg_wSpiral, unreg_wSpiral, update_WSpiral, draw_WSpiral_panel
+from .WTorus import reg_wTorus, unreg_wTorus, update_WTorus, draw_WTorus_panel
+from .WTube import reg_wTube, unreg_wTube, update_WTube, draw_WTube_panel
 
 def WUpdate(self, context):
     if self.wType == "NONE":
@@ -274,17 +274,17 @@ class WAddMenu(bpy.types.Menu):
         # Получаем доступ к коллекции иконок
         pcoll = w_icons
 
-        lay_out.operator(operator="mesh.make_wbox", icon_value=pcoll["W_Box_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wcapsule", icon_value=pcoll["W_Capsule_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wcone", icon_value=pcoll["W_Cone_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wplane", icon_value=pcoll["W_Plane_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wpyramid", icon_value=pcoll["W_Pyramid_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wring", icon_value=pcoll["W_Ring_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wscrew", icon_value=pcoll["W_Screw_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wsphere", icon_value=pcoll["W_Sphere_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wspiral", icon_value=pcoll["W_Spiral_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wtorus", icon_value=pcoll["W_Torus_64"].icon_id)
-        lay_out.operator(operator="mesh.make_wtube", icon_value=pcoll["W_Tube_64"].icon_id)
+        lay_out.operator(operator="mesh.make_wbox", icon_value=pcoll["WBox"].icon_id)
+        lay_out.operator(operator="mesh.make_wcapsule", icon_value=pcoll["WCapsule"].icon_id)
+        lay_out.operator(operator="mesh.make_wcone", icon_value=pcoll["WCone"].icon_id)
+        lay_out.operator(operator="mesh.make_wplane", icon_value=pcoll["WPlane"].icon_id)
+        lay_out.operator(operator="mesh.make_wpyramid", icon_value=pcoll["WPyramid"].icon_id)
+        lay_out.operator(operator="mesh.make_wring", icon_value=pcoll["WRing"].icon_id)
+        lay_out.operator(operator="mesh.make_wscrew", icon_value=pcoll["WScrew"].icon_id)
+        lay_out.operator(operator="mesh.make_wsphere", icon_value=pcoll["WSphere"].icon_id)
+        lay_out.operator(operator="mesh.make_wspiral", icon_value=pcoll["WSpiral"].icon_id)
+        lay_out.operator(operator="mesh.make_wtorus", icon_value=pcoll["WTorus"].icon_id)
+        lay_out.operator(operator="mesh.make_wtube", icon_value=pcoll["WTube"].icon_id)
 
 
 def draw_addMenu(self, context):
@@ -343,7 +343,7 @@ def load_w_icons():
     icons_dir = os.path.join(os.path.dirname(__file__), "icons")
     
     # Загружаем файлы. Имена ключей будут соответствовать именам файлов
-    # Например, к W_Box_64.png обратимся как w_icons["W_Box_64"]
+    # Например, к WBox.png обратимся как w_icons["WBox"]
     for entry in os.scandir(icons_dir):
         if entry.name.endswith(".png"):
             name = os.path.splitext(entry.name)[0]
@@ -374,9 +374,7 @@ def register():
     bpy.types.VIEW3D_MT_add.prepend(draw_addMenu)
     bpy.utils.register_class(ConvertWMesh)
     bpy.utils.register_class(WEditPanel)
-    
-    print("Registered W_Mesh")
-
+        
 def unregister():
     unload_w_icons() # Очищаем память при выключении
     del bpy.types.Mesh.wData

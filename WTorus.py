@@ -110,7 +110,7 @@ def update_WTorus (wData):
         coefficient=wData.coeff
     )
 
-# add object W_Plane
+# add object WPlane
 class Make_WTorus(bpy.types.Operator):
     """Create primitive wTorus"""
     bl_idname = "mesh.make_wtorus"
@@ -225,8 +225,8 @@ def draw_WTorus_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Torus_64" in w_icons:
-        icon_id = w_icons["W_Torus_64"].icon_id
+    if w_icons and "WTorus" in w_icons:
+        icon_id = w_icons["WTorus"].icon_id
         lay_out.label(text="Type: wTorus", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wTorus", icon='MESH_TORUS')

@@ -132,7 +132,7 @@ def update_WCone (wData):
         coefficient=wData.coeff
     )
 
-# add object W_Plane
+# add object WPlane
 class Make_WCone(bpy.types.Operator):
     """Create primitive wCone"""
     bl_idname = "mesh.make_wcone"
@@ -247,8 +247,8 @@ def draw_WCone_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Cone_64" in w_icons:
-        icon_id = w_icons["W_Cone_64"].icon_id
+    if w_icons and "WCone" in w_icons:
+        icon_id = w_icons["WCone"].icon_id
         lay_out.label(text="Type: wCone", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wCone", icon='MESH_CONE')

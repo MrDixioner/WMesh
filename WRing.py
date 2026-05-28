@@ -121,7 +121,7 @@ def update_WRing (wData):
         coefficient = wData.coeff
     )
 
-# add object W_Ring
+# add object WRing
 class Make_WRing(bpy.types.Operator):
     """Create primitive wRing"""
     bl_idname = "mesh.make_wring"
@@ -234,8 +234,8 @@ def draw_WRing_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Ring_64" in w_icons:
-        icon_id = w_icons["W_Ring_64"].icon_id
+    if w_icons and "WRing" in w_icons:
+        icon_id = w_icons["WRing"].icon_id
         lay_out.label(text="Type: wRing", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wRing", icon='MESH_CIRCLE')

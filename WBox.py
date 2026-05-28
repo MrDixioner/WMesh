@@ -121,7 +121,7 @@ def update_WBox (wData):
         centered=wData.cent
     )
 
-# add object W_Plane
+# add object WPlane
 class Make_WBox(bpy.types.Operator):
     """Create primitive wBox"""
     bl_idname = "mesh.make_wbox"
@@ -223,8 +223,8 @@ def draw_WBox_panel(self, context):
     lay_out.use_property_split = True
     WData = context.object.data.wData
 
-    if w_icons and "W_Box_64" in w_icons:
-        icon_id = w_icons["W_Box_64"].icon_id
+    if w_icons and "WBox" in w_icons:
+        icon_id = w_icons["WBox"].icon_id
         lay_out.label(text="Type: wBox", icon_value=icon_id)
     else:
         lay_out.label(text="Type: wBox", icon='MESH_CUBE')
