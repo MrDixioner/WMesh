@@ -9,7 +9,7 @@
 <img width="890" height="659" alt="image" src="https://github.com/user-attachments/assets/ed317c5b-ea89-4401-bb96-962fd7985b5c" />
 
 ### ✨ Features
-* **Parametric Primitives:** Create Cube, Capsule, Cone, Plane, Disc, Screw, Pyramid, Spiral, Sphere, Torus, and Cylinder (Pipe).
+* **Parametric Primitives:** Create Cube, Capsule, Cone, Plane, Disc, Screw, Pyramid, Spring, Sphere, Torus, and Cylinder (Pipe).
 * **Section Support:** Create partial sections for Cylinder and Torus instead of full circles.
 * **Full Control:** Adjust segments across all planes for every primitive.
 * **[NEW] Shrinkage Compensation (Coef):** Available for rounded primitives (except Sphere/Screw). It compensates for size loss after applying the *Subdivision Surface* modifier for high-precision modeling.
@@ -40,7 +40,7 @@
 <img width="890" height="659" alt="image" src="https://github.com/user-attachments/assets/ed317c5b-ea89-4401-bb96-962fd7985b5c" />
 
 ### ✨ Возможности
-* **Набор примитивов:** Куб, Капсула, Конус, Плоскость, Диск, Резьба, Пирамида, Спираль, Сфера, Тор и Цилиндр (труба).
+* **Набор примитивов:** Куб, Капсула, Конус, Плоскость, Диск, Резьба, Пирамида, Пружина, Сфера, Тор и Цилиндр (труба).
 * **Работа с секциями:** Для Цилиндра или Тора можно создавать не только полные окружности, но и отдельные секции.
 * **Детализация:** Гибкая настройка сегментов по всем плоскостям объектов.
 * **[НОВОЕ] Коэффициент усадки (Coef):** Для всех округлых объектов (кроме Сферы/Резьбы). Позволяет сохранять точные размеры объекта после применения модификатора *Subdivision Surface*.
